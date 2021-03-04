@@ -10,6 +10,8 @@ Zhangzhang Li
 MIT
 
 ## Run the project locally
+npm install
+npm start
 
 ## Demo
 
