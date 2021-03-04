@@ -8,7 +8,7 @@ Zhangzhang Li
 ## License
 MIT
 
-## run the project locally
+## Run the project locally
 
 ## Demo
 
