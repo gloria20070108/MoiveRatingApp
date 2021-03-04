@@ -2,24 +2,21 @@
   "name": "moiveratingapp",
   "version": "1.0.0",
   "description": "Project 2 of [CS5610](https://johnguerra.co/classes/webDevelopment_spring_2021/)",
-  "main": "index.js",
+  "main": "backend.js",
   "scripts": {
+    "start": "node ./node_modules/nodemon/bin/nodemon.js backend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gloria20070108/MoiveRatingApp.git"
   },
   "author": "na lou, zhangzhang li",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gloria20070108/MoiveRatingApp/issues"
-  },
-  "homepage": "https://github.com/gloria20070108/MoiveRatingApp#readme",
   "devDependencies": {
     "bootstrap": "^5.0.0-beta2",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
+    "nodemon": "2.0.7",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
