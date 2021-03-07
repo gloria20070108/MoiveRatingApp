@@ -1,0 +1,19 @@
+.container {
+  margin-top: 60px;
+  padding-top: 30px;
+}
+
+.to-right {
+  margin-left: auto;
+}
+
+.greeting {
+  color: #ffffff;
+  font-size: 18px;
+  vertical-align: middle;
+  padding-right: 10px;
+}
+
+.sign-in-btn {
+  margin-top: 20px;
+}
