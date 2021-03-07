@@ -13,7 +13,8 @@ function showBtn(user) {
   }
 }
 
-function signIn() {
+function signIn(event) {
+  event.preventDefault();
   const username = document.getElementById("signInUsername").value;
   const password = document.getElementById("signInPassword").value;
   console.log(username, password);
@@ -21,13 +22,14 @@ function signIn() {
   errorMsgDiv.innerHTML = "backend not implement yet";
 }
 
-function signOut() {
-  console.log("sign out");
+function signOut(event) {
+  event.preventDefault();
   const errorMsgDiv = document.getElementById("sign-out-modal-error-msg");
   errorMsgDiv.innerHTML = "backend not implement yet";
 }
 
-function signUp() {
+function signUp(event) {
+  event.preventDefault();
   const username = document.getElementById("signUpUsername").value;
   const password = document.getElementById("signUpPassword").value;
   const confirmPassword = document.getElementById("signUpConfirmPassword")

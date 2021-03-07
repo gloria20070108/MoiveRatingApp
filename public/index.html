@@ -32,7 +32,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form onsubmit="signIn(event)">
               <input
                 type="text"
                 id="signInUsername"
@@ -49,9 +49,8 @@
                 required
               />
               <button
-                type="button"
+                type="submit"
                 class="w-100 btn btn-lg btn-primary sign-in-btn"
-                onclick="signIn()"
               >
                 Sign in
               </button>
@@ -83,7 +82,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form onsubmit="signUp(event)">
               <input
                 type="text"
                 id="signUpUsername"
@@ -108,8 +107,7 @@
               />
               <button
                 class="w-100 btn btn-lg btn-primary sign-up-btn"
-                type="button"
-                onclick="signUp()"
+                type="submit"
               >
                 Sign up
               </button>
@@ -142,11 +140,10 @@
           </div>
           <div class="modal-body">
             <div>Are you sure you want to sign out?</div>
-            <form>
+            <form onsubmit="signOut(event)">
               <button
                 class="w-100 btn btn-lg btn-primary sign-up-btn"
-                type="button"
-                onclick="signOut()"
+                type="submit"
               >
                 Sign out
               </button>
