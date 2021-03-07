@@ -12,7 +12,7 @@
     <title>Movie Rating App</title>
   </head>
   <body class="d-flex flex-column h-100">
-    <!-- Login Modal -->
+    <!-- sign in Modal -->
     <div
       class="modal fade"
       id="signInModal"
@@ -33,23 +33,17 @@
           </div>
           <div class="modal-body">
             <form>
-              <label for="inputUsername" class="visually-hidden"
-                >Username</label
-              >
               <input
                 type="text"
-                id="inputUsername"
+                id="signInInputUsername"
                 class="form-control"
                 placeholder="Username"
                 required
                 autofocus
               />
-              <label for="inputPassword" class="visually-hidden"
-                >Password</label
-              >
               <input
                 type="password"
-                id="inputPassword"
+                id="signInInputPassword"
                 class="form-control"
                 placeholder="Password"
                 required
@@ -65,12 +59,68 @@
         </div>
       </div>
     </div>
+    <!-- end of sign in modal-->
 
+    <!-- sign up Modal -->
+    <div
+      class="modal fade"
+      id="signUpModal"
+      tabindex="-1"
+      aria-labelledby="signUpModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signUpModalLabel">Sign up</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <input
+                type="text"
+                id="signUpUsername"
+                class="form-control"
+                placeholder="Username"
+                required
+                autofocus
+              />
+              <input
+                type="password"
+                id="signUpPassword"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+              <input
+                type="password"
+                id="signUpConfirmPassword"
+                class="form-control"
+                placeholder="Confirm Password"
+                required
+              />
+              <button
+                class="w-100 btn btn-lg btn-primary sign-up-btn"
+                type="submit"
+              >
+                Sign up
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of sign up modal-->
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-          <span class="navbar-brand">MovieRating</span>>
+          <span class="navbar-brand">MovieRating</span>
           <button
             class="navbar-toggler"
             type="button"
@@ -90,6 +140,13 @@
                 data-bs-target="#signInModal"
               >
                 Sign In
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#signUpModal"
+              >
+                Sign Up
               </button>
             </div>
           </div>
