@@ -26,3 +26,8 @@
   margin-bottom: 5px;
   margin-top: 5px;
 }
+
+.error-msg {
+  padding: 0 10px;
+  color: red;
+}
