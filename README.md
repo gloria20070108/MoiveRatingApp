@@ -10,9 +10,14 @@ Zhangzhang Li
 MIT
 
 ## Run the project locally
-npm install
+Making sure MongoDB is installed and running as a service locally.
+Please refer to [Mongo doc](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 
-npm start
+git clone current project and go to the project root dir
+
+run `npm install`
+
+run `npm start`
 
 ## Demo
 
