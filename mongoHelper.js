@@ -5,8 +5,6 @@ const mongodbUrl = "mongodb://" + mongoConfig.mongodbHost + ":27017";
 const MongoClient = require("mongodb").MongoClient;
 
 exports.localReg = (username, password) => {
-  console.log(username, password);
-
   const deferred = q.defer();
 
   MongoClient.connect(mongodbUrl, (err, client) => {
