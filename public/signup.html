@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MovieRating - Sign Up</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="./styles/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="container">
+      <div>
+        <h1 class="title">Movie Rating</h1>
+        <form action="/signup" method="post">
+          <input
+            type="text"
+            id="signUpUsername"
+            name="username"
+            class="form-control"
+            placeholder="New Username"
+            required
+            autofocus
+          />
+          <input
+            type="password"
+            id="signUpPassword"
+            name="password"
+            class="form-control"
+            placeholder="New Password"
+            required
+          />
+          <button
+            class="w-100 btn btn-lg btn-primary sign-up-btn"
+            type="submit"
+          >
+            Sign up
+          </button>
+        </form>
+        <div class="button-link">
+          <a href="signin">Sign in</a>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
