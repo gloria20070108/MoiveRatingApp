@@ -24,6 +24,20 @@
   text-align: center;
 }
 
+.greeting-msg {
+  color: #ffffff;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.error-msg {
+  display: inline-block;
+  color: red;
+  width: 89%;
+}
+
 .button-link {
+  display: inline-block;
   text-align: right;
+  width: 10%;
 }
