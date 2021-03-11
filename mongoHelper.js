@@ -2,6 +2,8 @@ const q = require("q");
 const mongoConfig = require("./mongoConfig.js");
 
 const mongodbUrl = "mongodb://" + mongoConfig.mongodbHost + ":27017";
+//const mongodbUri = 'mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/moviesflix?retryWrites=true&w=majority'
+//const client = new MongoClient(uri)
 const MongoClient = require("mongodb").MongoClient;
 
 exports.localReg = (username, password) => {
@@ -10,6 +12,8 @@ exports.localReg = (username, password) => {
   const deferred = q.defer();
 
   MongoClient.connect(mongodbUrl, (err, client) => {
+    if (err) return console.error(err);
+    console.log("Connected to Database");
     const db = client.db("users");
     const collection = db.collection("localUsers");
 
