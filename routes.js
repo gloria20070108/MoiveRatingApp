@@ -38,7 +38,7 @@ module.exports = (app, passport) => {
     })
   );
 
-  app.post("/signout", function (req, res) {
+  app.post("/signout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
@@ -74,8 +74,6 @@ module.exports = (app, passport) => {
     new LocalStrategy(
       { passReqToCallback: true },
       (req, username, password, done) => {
-        console.log(username, password);
-
         mongoHelper
           .localReg(username, password)
           .then((user) => {
