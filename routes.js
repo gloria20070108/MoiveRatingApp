@@ -25,6 +25,9 @@ module.exports = (app, passport) => {
   app.get("/user", (req, res) => {
     res.json({ username: req.user });
   });
+  app.get("/details", (req, res) => {
+    res.sendfile("./public/details.html");
+  });
 
   app.post("/signin", (req, res, next) => {
     passport.authenticate("local-signin", (error, user) => {
@@ -67,6 +70,12 @@ module.exports = (app, passport) => {
   app.post("/signout", (req, res) => {
     req.logout();
     res.redirect("/");
+  });
+
+  app.post("/addcomments", (req, res) => {
+    comments = req.body.comments;
+    mongoHelper.addcomments("DARK", comments);
+    res.redirect(req.get("referer"));
   });
 
   passport.use(
