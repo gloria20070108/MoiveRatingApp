@@ -66,7 +66,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="to-right">
-              <span id="greeting-msg" class="greeting-msg"></span>
               <button
                 id="sign-out-btn"
                 class="btn btn-sm btn-outline-success"
@@ -83,35 +82,41 @@
     <!---main---->
     <body>
       <div class="container overflow-hidden">
-        <h1>What's Streaming</h1>
+        <h1>DARK</h1>
         <div class="row gy-5">
           <div class="col-lg-4 col-md-6 col-sm-12">
             <img src="./images/1.png" class="img-fluid" alt="movie gallery" />
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
-            <img src="./images/2.png" class="img-fluid" alt="movie gallery" />
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <img src="./images/3.png" class="img-fluid" alt="movie gallery" />
+            <p>
+              The first German production from the world's leading Internet TV
+              Network is set in a German town in present day where the
+              disappearance of two young children exposes the double lives and
+              fractured relationships among four families. In ten hour-long
+              episodes, the story takes on a surprising twist that ties back to
+              the same town in 1986. Written by Wiedemann & Berg Television
+            </p>
           </div>
         </div>
         <div class="row gy-5">
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <img src="./images/4.png" class="img-fluid" alt="movie gallery" />
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <img src="./images/5.png" class="img-fluid" alt="movie gallery" />
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <img src="./images/6.png" class="img-fluid" alt="movie gallery" />
-          </div>
+          <form action="/addcomments" method="post">
+            <input
+              id="dark"
+              type="text"
+              name="comments"
+              class="form-control input-lg"
+              placeholder="comments"
+              required
+              autofocus
+            />
+
+            <input type="submit" value="Submit" />
+          </form>
         </div>
       </div>
     </body>
 
-    <footer>Made by Gloria and Na</footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="./js/home.js"></script>
-    <script type="text/javascript" src="./js/ajax-client.js"></script>
+    <script src=".javascript/frontend.js"></script>
   </body>
 </html>

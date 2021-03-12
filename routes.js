@@ -22,44 +22,51 @@ module.exports = (app, passport) => {
     res.sendfile("./public/signup.html");
   });
 
-  app.get("/details", (req, res) => {
-    res.sendfile("./public/details.html");
+  app.get("/user", (req, res) => {
+    res.json({ username: req.user });
   });
 
-  app.post(
-    "/signin",
-    passport.authenticate("local-signin", {
-      failureRedirect: "/",
-      successRedirect: "/home",
-    })
-  );
+  app.post("/signin", (req, res, next) => {
+    passport.authenticate("local-signin", (error, user) => {
+      if (error) {
+        return res.status(500).json(error);
+      }
 
-  app.post("/", function (req, res) {
-    res.send("POST request to the homepage");
+      if (!user) {
+        return res.status(401).json({});
+      }
+
+      req.login(user, (error) => {
+        if (error) {
+          return res.status(500).json(error);
+        }
+        return res.json({
+          message: "successfully sign in!",
+        });
+      });
+    })(req, res, next);
   });
 
-  app.post(
-    "/signup",
-    passport.authenticate("local-signup", {
-      failureRedirect: "/",
-      successRedirect: "/home",
-    })
-  );
+  app.post("/signup", (req, res, next) => {
+    passport.authenticate("local-signup", (error, user) => {
+      if (error) {
+        return res.status(500).json(error);
+      }
+
+      req.login(user, (error) => {
+        if (error) {
+          return res.status(500).json(error);
+        }
+        return res.json({
+          message: "successfully sign up and sign in!",
+        });
+      });
+    })(req, res, next);
+  });
 
   app.post("/signout", (req, res) => {
     req.logout();
     res.redirect("/");
-  });
-
-  app.post("/addcomments", (req, res) => {
-    console.log(req.body.comments);
-    comments = req.body.comments;
-    mongoHelper.addcomments(comments);
-    res.redirect(req.get("referer"));
-  });
-
-  app.get("/getcomments", (req, res) => {
-    res.send("hello");
   });
 
   passport.use(
@@ -77,12 +84,13 @@ module.exports = (app, passport) => {
               done(null, user);
             } else {
               console.log("COULD NOT LOG IN");
-              req.session.error = "Could not log user in. Please try again."; //inform user could not log them in
+              req.session.error = "Could not log user in. Please try again.";
               done(null, user);
             }
           })
           .fail((err) => {
             console.log(err.body);
+            done(err.body, user);
           });
       }
     )

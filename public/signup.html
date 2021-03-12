@@ -15,10 +15,10 @@
     <main class="container">
       <div>
         <h1 class="title">Movie Rating</h1>
-        <form action="/signup" method="post">
+        <form id="sign-up-form">
           <input
             type="text"
-            id="signUpUsername"
+            id="sign-up-username"
             name="username"
             class="form-control"
             placeholder="New Username"
@@ -27,10 +27,18 @@
           />
           <input
             type="password"
-            id="signUpPassword"
+            id="sign-up-password"
             name="password"
             class="form-control"
             placeholder="New Password"
+            required
+          />
+          <input
+            type="password"
+            id="sign-up-confirm-password"
+            name="signUpConfirmPassword"
+            class="form-control"
+            placeholder="Confirm New Password"
             required
           />
           <button
@@ -40,11 +48,16 @@
             Sign up
           </button>
         </form>
-        <div class="button-link">
-          <a href="signin">Sign in</a>
+        <div>
+          <div id="error-msg" class="error-msg"></div>
+          <div class="button-link">
+            <a href="signin">Sign in</a>
+          </div>
         </div>
       </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./js/signup.js"></script>
+    <script type="text/javascript" src="./js/ajax-client.js"></script>
   </body>
 </html>
