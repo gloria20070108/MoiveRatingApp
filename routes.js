@@ -22,6 +22,10 @@ module.exports = (app, passport) => {
     res.sendfile("./public/signup.html");
   });
 
+  app.get("/details", (req, res) => {
+    res.sendfile("./public/details.html");
+  });
+
   app.post(
     "/signin",
     passport.authenticate("local-signin", {
@@ -29,6 +33,10 @@ module.exports = (app, passport) => {
       successRedirect: "/home",
     })
   );
+
+  app.post("/", function (req, res) {
+    res.send("POST request to the homepage");
+  });
 
   app.post(
     "/signup",
@@ -41,6 +49,17 @@ module.exports = (app, passport) => {
   app.post("/signout", (req, res) => {
     req.logout();
     res.redirect("/");
+  });
+
+  app.post("/addcomments", (req, res) => {
+    console.log(req.body.comments);
+    comments = req.body.comments;
+    mongoHelper.addcomments(comments);
+    res.redirect(req.get("referer"));
+  });
+
+  app.get("/getcomments", (req, res) => {
+    res.send("hello");
   });
 
   passport.use(

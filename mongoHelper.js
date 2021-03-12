@@ -69,3 +69,31 @@ exports.localAuth = (username, password) => {
 
   return deferred.promise;
 };
+
+const mongodbUrlmovie =
+  "mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/movieflex?retryWrites=true&w=majority";
+
+exports.addcomments = (movie_name, comments) => {
+  console.log(comments);
+  console.log(movie_name);
+
+  const deferred = q.defer();
+
+  MongoClient.connect(mongodbUrlmovie, (err, client) => {
+    const db = client.db("movieflex");
+    const collection = db.collection("movies");
+
+    const moviecomments = {
+      movie_name: movie_name,
+      comments: comments,
+    };
+
+    console.log("inserting comment");
+
+    collection.insertOne(moviecomments).then(() => {
+      client.close();
+      deferred.resolve(moviecomments);
+    });
+    return deferred.promise;
+  });
+};
