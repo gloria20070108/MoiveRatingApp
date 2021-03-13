@@ -87,10 +87,13 @@ exports.getMovies = (name, year) => {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     console.log(mongoRequest);
 
 >>>>>>> c67447e... Change home page to load movies from mongodb
+=======
+>>>>>>> aaeefff... clean up
     const result = collection.find(mongoRequest).toArray();
     deferred.resolve(result);
     client.close();

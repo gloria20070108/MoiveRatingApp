@@ -1,7 +1,5 @@
-var express = require("express");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoHelper = require("./mongoHelper.js");
-var router = express.Router();
 
 module.exports = (app, passport) => {
   app.get("/", isLoggedIn, (req, res) => {
@@ -44,11 +42,15 @@ module.exports = (app, passport) => {
     res.sendfile("./public/details.html");
   });
 
+<<<<<<< HEAD
   app.post("/details/:movie_name", (req, res) => {
     res.sendfile("./public/details.html");
   });
 
   router.get("/fetchcomment/:movie_name", async (req, res) => {
+=======
+  app.get("/fetchcomment/:movie_name", async (req, res) => {
+>>>>>>> aaeefff... clean up
     movie_name = req.params.movie_name;
     console.log("router movie name " + movie_name);
     try {
@@ -78,8 +80,6 @@ module.exports = (app, passport) => {
       res.send(err);
     }
   });
-
-  app.use("/", router);
 
   app.post("/signin", (req, res, next) => {
     passport.authenticate("local-signin", (error, user) => {
