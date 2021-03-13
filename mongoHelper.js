@@ -86,6 +86,11 @@ exports.getMovies = (name, year) => {
       mongoRequest.year = year;
     }
 
+<<<<<<< HEAD
+=======
+    console.log(mongoRequest);
+
+>>>>>>> c67447e... Change home page to load movies from mongodb
     const result = collection.find(mongoRequest).toArray();
     deferred.resolve(result);
     client.close();
@@ -94,6 +99,7 @@ exports.getMovies = (name, year) => {
   return deferred.promise;
 };
 
+<<<<<<< HEAD
 exports.createMovies = (name, year) => {
   const deferred = q.defer();
 
@@ -126,6 +132,8 @@ exports.createMovies = (name, year) => {
   return deferred.promise;
 };
 
+=======
+>>>>>>> c67447e... Change home page to load movies from mongodb
 exports.addcomments = async (movie_name, comments) => {
   const db = client.db("movieflex");
   const collection = db.collection("movies");

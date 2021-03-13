@@ -28,6 +28,18 @@ module.exports = (app, passport) => {
     res.json({ username: req.user });
   });
 
+  app.get("/movies", async (req, res) => {
+    const name = req.query.name;
+    const year = req.query.year;
+
+    try {
+      const result = await mongoHelper.getMovies(name, year);
+      res.json(result);
+    } catch (err) {
+      res.json({ error: err });
+    }
+  });
+
   app.get("/details/:movie_name", (req, res) => {
     res.sendfile("./public/details.html");
   });

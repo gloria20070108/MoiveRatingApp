@@ -57,6 +57,7 @@ const getMovies = (filters, updateYearsSelect) => {
             allYears.push(movies[i].year);
           }
         }
+
         allYears.sort();
         for (let i = 0; i < allYears.length; i++) {
           yearSelect.innerHTML +=
