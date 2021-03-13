@@ -8,7 +8,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link href="./styles/main.css" rel="stylesheet" />
+    <link href="../styles/main.css" rel="stylesheet" />
     <title>Movie Rating</title>
   </head>
   <body class="d-flex flex-column h-100">
@@ -80,43 +80,45 @@
       </nav>
     </header>
     <!---main---->
-    <body>
-      <div class="container overflow-hidden">
-        <h1>DARK</h1>
-        <div class="row gy-5">
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <img src="./images/1.png" class="img-fluid" alt="movie gallery" />
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12">
-            <p>
-              The first German production from the world's leading Internet TV
-              Network is set in a German town in present day where the
-              disappearance of two young children exposes the double lives and
-              fractured relationships among four families. In ten hour-long
-              episodes, the story takes on a surprising twist that ties back to
-              the same town in 1986. Written by Wiedemann & Berg Television
-            </p>
-          </div>
+    <div class="container overflow-hidden">
+      <h1 id="movieTitle">DARK</h1>
+      <div class="row gy-5">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <img
+            id="movieimage"
+            src="../images/1.png"
+            class="img-fluid"
+            alt="movie gallery"
+          />
         </div>
-        <div class="row gy-5">
-          <form action="/addcomments" method="post">
-            <input
-              id="dark"
-              type="text"
-              name="comments"
-              class="form-control input-lg"
-              placeholder="comments"
-              required
-              autofocus
-            />
-
-            <input type="submit" value="Submit" />
-          </form>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+          <p>
+            The first German production from the world's leading Internet TV
+            Network is set in a German town in present day where the
+            disappearance of two young children exposes the double lives and
+            fractured relationships among four families. In ten hour-long
+            episodes, the story takes on a surprising twist that ties back to
+            the same town in 1986. Written by Wiedemann & Berg Television
+          </p>
         </div>
       </div>
-    </body>
-
+      <div class="row gy-5">
+        <p id="allcomment">COMMENTS</p>
+        <form action="/addcomments" method="post">
+          <input
+            id="dark"
+            type="text"
+            name="comments"
+            class="form-control input-lg"
+            placeholder="comments"
+            required
+            autofocus
+          />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src=".javascript/frontend.js"></script>
+    <script type="text/javascript" src="../js/frontend.js"></script>
   </body>
 </html>

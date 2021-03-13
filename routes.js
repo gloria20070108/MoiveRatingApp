@@ -1,5 +1,7 @@
+var express = require("express");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoHelper = require("./mongoHelper.js");
+var router = express.Router();
 
 module.exports = (app, passport) => {
   app.get("/", isLoggedIn, (req, res) => {
@@ -25,9 +27,23 @@ module.exports = (app, passport) => {
   app.get("/user", (req, res) => {
     res.json({ username: req.user });
   });
-  app.get("/details", (req, res) => {
+
+  app.get("/details/:movie_name", (req, res) => {
     res.sendfile("./public/details.html");
   });
+
+  router.get("/fetchcomment/:movie_name", async (req, res) => {
+    movie_name = req.params.movie_name;
+    console.log("router movie name " + movie_name);
+    try {
+      const result = await mongoHelper.getcomments(movie_name);
+      res.json(result);
+    } catch (err) {
+      res.send(err);
+    }
+  });
+
+  app.use("/", router);
 
   app.post("/signin", (req, res, next) => {
     passport.authenticate("local-signin", (error, user) => {
@@ -70,12 +86,6 @@ module.exports = (app, passport) => {
   app.post("/signout", (req, res) => {
     req.logout();
     res.redirect("/");
-  });
-
-  app.post("/addcomments", (req, res) => {
-    comments = req.body.comments;
-    mongoHelper.addcomments("DARK", comments);
-    res.redirect(req.get("referer"));
   });
 
   passport.use(

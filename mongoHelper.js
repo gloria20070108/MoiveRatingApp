@@ -1,11 +1,14 @@
-const q = require("q");
-// const mongoConfig = require("./mongoConfig.js");
-
-// const mongodbUrl = "mongodb://" + mongoConfig.mongodbHost + ":27017";
-
 const MongoClient = require("mongodb").MongoClient;
+const q = require("q");
+const uri =
+  "mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/users?retryWrites=true&w=majority";
+const client = new MongoClient(uri);
+
+client.connect();
+
 const mongodbUrl =
   "mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/users?retryWrites=true&w=majority";
+MongoClient.connect(mongodbUrl);
 
 exports.localReg = (username, password) => {
   const deferred = q.defer();
@@ -68,30 +71,32 @@ exports.localAuth = (username, password) => {
   return deferred.promise;
 };
 
-const mongodbUrlmovie =
-  "mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/movieflex?retryWrites=true&w=majority";
-
-exports.addcomments = (movie_name, comments) => {
+exports.addcomments = async (movie_name, comments) => {
   console.log(comments);
   console.log(movie_name);
+  const db = client.db("movieflex");
+  const collection = db.collection("movies");
 
-  const deferred = q.defer();
+  const moviecomments = {
+    movie_name: movie_name,
+    comments: comments,
+  };
+  try {
+    result = await collection.insertOne(moviecomments);
+    console.log("added comments");
+  } catch (err) {
+    console.error("adding comments wrong");
+  }
+};
 
-  MongoClient.connect(mongodbUrlmovie, (err, client) => {
-    const db = client.db("movieflex");
-    const collection = db.collection("movies");
-
-    const moviecomments = {
-      movie_name: movie_name,
-      comments: comments,
-    };
-
-    console.log("inserting comment");
-
-    collection.insertOne(moviecomments).then(() => {
-      client.close();
-      deferred.resolve(moviecomments);
-    });
-    return deferred.promise;
-  });
+exports.getcomments = async (movie_name) => {
+  const db = client.db("movieflex");
+  const collection = db.collection("movies");
+  try {
+    const result = await collection.find({ movie_name: movie_name }).toArray();
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error("getting comments wrong");
+  }
 };
