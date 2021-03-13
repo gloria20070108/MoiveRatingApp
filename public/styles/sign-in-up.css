@@ -1,0 +1,35 @@
+.container {
+  margin-top: 60px;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 30px;
+}
+
+.title {
+  text-align: center;
+}
+
+.sign-in-btn {
+  margin-top: 20px;
+}
+
+.sign-up-btn {
+  margin-top: 20px;
+}
+
+.error-msg {
+  display: inline-block;
+  color: red;
+  width: 78%;
+}
+
+.button-link {
+  display: inline-block;
+  text-align: right;
+  width: 20%;
+}
+
+.form-control {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}

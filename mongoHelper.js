@@ -103,6 +103,9 @@ exports.getMovies = (name, year) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6f7e2b7... add create backend
 exports.createMovies = (name, year) => {
   const deferred = q.defer();
 
@@ -135,8 +138,11 @@ exports.createMovies = (name, year) => {
   return deferred.promise;
 };
 
+<<<<<<< HEAD
 =======
 >>>>>>> c67447e... Change home page to load movies from mongodb
+=======
+>>>>>>> 6f7e2b7... add create backend
 exports.addcomments = async (movie_name, comments) => {
   const db = client.db("movieflex");
   const collection = db.collection("movies");

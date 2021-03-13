@@ -38,6 +38,22 @@ module.exports = (app, passport) => {
     }
   });
 
+  app.post("/movies", async (req, res) => {
+    const name = req.body.name.toUpperCase();
+    const year = req.body.year;
+
+    try {
+      const result = await mongoHelper.createMovies(name, year);
+      if (result == false) {
+        res.status(500).json(result);
+      } else {
+        res.json(result);
+      }
+    } catch (err) {
+      res.status(500).json({ error: err });
+    }
+  });
+
   app.get("/details/:movie_name", (req, res) => {
     res.sendfile("./public/details.html");
   });
