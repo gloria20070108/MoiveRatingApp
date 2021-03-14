@@ -57,10 +57,6 @@ const getMovies = (filters, updateYearsSelect) => {
             allYears.push(movies[i].year);
           }
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 6f7e2b7... add create backend
         allYears.sort();
         for (let i = 0; i < allYears.length; i++) {
           yearSelect.innerHTML +=

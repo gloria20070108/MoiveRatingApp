@@ -58,15 +58,11 @@ module.exports = (app, passport) => {
     res.sendfile("./public/details.html");
   });
 
-<<<<<<< HEAD
   app.post("/details/:movie_name", (req, res) => {
     res.sendfile("./public/details.html");
   });
 
-  router.get("/fetchcomment/:movie_name", async (req, res) => {
-=======
   app.get("/fetchcomment/:movie_name", async (req, res) => {
->>>>>>> aaeefff... clean up
     movie_name = req.params.movie_name;
     console.log("router movie name " + movie_name);
     try {
@@ -76,7 +72,8 @@ module.exports = (app, passport) => {
       res.send(err);
     }
   });
-  router.post("/addcomment/:movie_name", async (req, res) => {
+
+  app.post("/addcomment/:movie_name", async (req, res) => {
     movie_name = req.params.movie_name;
     comments = req.body.comments;
     try {
@@ -86,7 +83,8 @@ module.exports = (app, passport) => {
       res.send(err);
     }
   });
-  router.get("/fetchdescription/:movie_name", async (req, res) => {
+
+  app.get("/fetchdescription/:movie_name", async (req, res) => {
     movie_name = req.params.movie_name;
     console.log("router movie name " + movie_name);
     try {
