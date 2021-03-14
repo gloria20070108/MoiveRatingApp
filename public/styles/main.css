@@ -1,3 +1,8 @@
+body {
+  background-color: #d3912f;
+  font-family: "Calibri", sans-serif !important;
+}
+
 .container {
   margin-top: 60px;
   padding-top: 30px;
@@ -7,12 +12,43 @@
   margin-left: auto;
 }
 
-.sign-in-btn {
-  margin-top: 20px;
+.greeting-msg {
+  color: #ffffff;
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
-.sign-up-btn {
-  margin-top: 20px;
+.title {
+  display: inline-block;
+}
+
+.header {
+  display: flex;
+}
+
+.actions-container {
+  margin-top: 9px;
+  margin-left: auto;
+}
+
+.name-filter {
+  width: 25vw;
+  padding-left: 5px;
+}
+
+.year-select {
+  width: 120px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 36px;
+  padding-left: 5px;
+}
+
+.create-movie-btn {
+  height: 36px;
+  padding: 0;
+  width: 36px;
+  margin-top: -4px;
 }
 
 .form-control {
@@ -20,39 +56,26 @@
   margin-top: 5px;
 }
 
-.title {
-  text-align: center;
-}
-
-.greeting-msg {
-  color: #ffffff;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
 .error-msg {
-  display: inline-block;
+  margin-left: 15px;
   color: red;
-  width: 89%;
 }
 
-.button-link {
+.movie-item {
   display: inline-block;
-  text-align: right;
-  width: 10%;
+  width: 25vw;
+  margin: 20px;
+  cursor: pointer;
 }
+
 .stars {
   margin: 20px 0;
   font-size: 24px;
   color: #d17581;
 }
 
-body {
-  background-color: #d3912f;
-  font-family: "Calibri", sans-serif !important;
-}
-.dark input[type="text"] {
+/*.dark input[type="text"] {
   height: 400px;
   font-size: 20px;
   line-height: 100px;
-}
+}*/

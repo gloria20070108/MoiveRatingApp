@@ -1,13 +1,11 @@
 const MongoClient = require("mongodb").MongoClient;
 const q = require("q");
-const uri =
+const mongodbUrl =
   "mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/users?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
+const client = new MongoClient(mongodbUrl);
 
 client.connect();
 
-const mongodbUrl =
-  "mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/users?retryWrites=true&w=majority";
 MongoClient.connect(mongodbUrl);
 
 exports.localReg = (username, password) => {
@@ -65,6 +63,63 @@ exports.localAuth = (username, password) => {
       }
 
       client.close();
+    });
+  });
+
+  return deferred.promise;
+};
+
+exports.getMovies = (name, year) => {
+  const deferred = q.defer();
+
+  MongoClient.connect(mongodbUrl, (err, client) => {
+    const db = client.db("movieflex");
+    const collection = db.collection("descriptions");
+
+    const mongoRequest = {};
+
+    if (name) {
+      mongoRequest.movie_name = { $regex: ".*" + name.toUpperCase() + ".*" };
+    }
+
+    if (year) {
+      mongoRequest.year = year;
+    }
+
+    const result = collection.find(mongoRequest).toArray();
+    deferred.resolve(result);
+    client.close();
+  });
+
+  return deferred.promise;
+};
+
+exports.createMovies = (name, year) => {
+  const deferred = q.defer();
+
+  MongoClient.connect(mongodbUrl, (err, client) => {
+    const db = client.db("movieflex");
+    const collection = db.collection("descriptions");
+
+    collection.findOne({ movie_name: name }).then((result) => {
+      if (null != result) {
+        console.log("MOVIE ALREADY EXISTS:", name);
+        deferred.resolve(false); // movie exists
+        client.close();
+      } else {
+        const newMovie = {
+          movie_name: name,
+          year: year,
+          rate: 3.0,
+        };
+
+        console.log("CREATING Movie:", name);
+
+        collection.insert(newMovie).then(() => {
+          client.close();
+          deferred.resolve(newMovie);
+        });
+      }
     });
   });
 
