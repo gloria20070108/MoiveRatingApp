@@ -160,7 +160,6 @@ exports.getcomments = (movie_name) => {
       const result = await collection
         .find({ movie_name: movie_name })
         .toArray();
-      console.log(result);
       client.close();
       deferred.resolve(result);
     } catch (err) {
@@ -192,17 +191,26 @@ exports.getdescriptions = (movie_name) => {
 
   return deferred.promise;
 };
-exports.addlike = async (movie_name, like) => {
-  const db = client.db("movieflex");
-  const collection = db.collection("descriptions");
-  console.log(parseInt(like));
-  like = parseInt(like) + 1;
-  try {
-    result = await collection.update(
-      { movie_name: movie_name },
-      { $set: { like: like } }
-    );
-  } catch (err) {
-    console.error("update like count done");
-  }
+exports.addlike = (movie_name, like) => {
+  const deferred = q.defer();
+
+  MongoClient.connect(mongodbUrl, async (err, client) => {
+    const db = client.db("movieflex");
+    const collection = db.collection("descriptions");
+    like = parseInt(like) + 1;
+    try {
+      result = await collection.update(
+        { movie_name: movie_name },
+        { $set: { like: like } }
+      );
+      client.close();
+      deferred.resolve(result);
+    } catch (err) {
+      console.error("updating like counts wrong");
+      deferred.resolve(false);
+      client.close();
+    }
+  });
+
+  return deferred.promise;
 };
