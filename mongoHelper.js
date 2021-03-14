@@ -192,3 +192,17 @@ exports.getdescriptions = (movie_name) => {
 
   return deferred.promise;
 };
+exports.addlike = async (movie_name, like) => {
+  const db = client.db("movieflex");
+  const collection = db.collection("descriptions");
+  console.log(parseInt(like));
+  like = parseInt(like) + 1;
+  try {
+    result = await collection.update(
+      { movie_name: movie_name },
+      { $set: { like: like } }
+    );
+  } catch (err) {
+    console.error("update like count done");
+  }
+};
