@@ -72,8 +72,6 @@ exports.localAuth = (username, password) => {
 };
 
 exports.addcomments = async (movie_name, comments) => {
-  console.log(comments);
-  console.log(movie_name);
   const db = client.db("movieflex");
   const collection = db.collection("movies");
 
@@ -83,7 +81,6 @@ exports.addcomments = async (movie_name, comments) => {
   };
   try {
     result = await collection.insertOne(moviecomments);
-    console.log("added comments");
   } catch (err) {
     console.error("adding comments wrong");
   }
@@ -98,5 +95,16 @@ exports.getcomments = async (movie_name) => {
     return result;
   } catch (err) {
     console.error("getting comments wrong");
+  }
+};
+exports.getdescriptions = async (movie_name) => {
+  const db = client.db("movieflex");
+  const collection = db.collection("descriptions");
+  try {
+    const result = await collection.findOne({ movie_name: movie_name });
+    console.log(result);
+    return result;
+  } catch (err) {
+    console.error("getting descriptions wrong");
   }
 };
