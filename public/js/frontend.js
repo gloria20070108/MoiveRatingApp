@@ -22,9 +22,10 @@ const fetchcomments = async (movie_name) => {
   const scomments = JSON.stringify(data);
   let idx;
   const obj = JSON.parse(scomments);
+  let comments = "";
   for (idx = 0; idx < obj.length; ++idx) {
     if (obj[idx].hasOwnProperty("comments")) {
-      const comments = obj[idx]["comments"];
+      comments = obj[idx]["comments"];
     }
     document.getElementById("allcomment").innerHTML += "<br>" + comments;
   }
