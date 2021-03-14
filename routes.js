@@ -64,7 +64,7 @@ module.exports = (app, passport) => {
 
   app.get("/fetchcomment/:movie_name", async (req, res) => {
     movie_name = req.params.movie_name;
-    console.log("router movie name " + movie_name);
+    //console.log("router movie name " + movie_name);
     try {
       const result = await mongoHelper.getcomments(movie_name);
       res.json(result);
@@ -86,9 +86,24 @@ module.exports = (app, passport) => {
 
   app.get("/fetchdescription/:movie_name", async (req, res) => {
     movie_name = req.params.movie_name;
-    console.log("router movie name " + movie_name);
+    //console.log("router movie name " + movie_name);
     try {
       const result = await mongoHelper.getdescriptions(movie_name);
+      res.json(result);
+    } catch (err) {
+      res.send(err);
+    }
+  });
+
+  app.post("/addlike/:movie_name", async (req, res) => {
+    movie_name = req.body.movie_name;
+    //like = parseFloat(req.body.like);
+    like = req.body.like;
+    //like = like + 1;
+    console.log(movie_name);
+    console.log(like);
+    try {
+      const result = await mongoHelper.addlike(movie_name, like);
       res.json(result);
     } catch (err) {
       res.send(err);
