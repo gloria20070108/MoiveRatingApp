@@ -1,4 +1,4 @@
-const signup = () => {
+const signup = async () => {
   event.preventDefault();
   const username = document.getElementById("sign-up-username").value;
   const password = document.getElementById("sign-up-password").value;
@@ -11,18 +11,20 @@ const signup = () => {
     return;
   }
 
-  ajaxRequest(
-    "POST",
-    "/signup",
-    { username: username, password: password },
-    (status, res) => {
-      if (status !== 200) {
-        errorMsg.innerHTML = "Can't sign up current user. Please try again.";
-      } else {
-        window.location.href = "/home";
-      }
-    }
-  );
+  const responds = await fetch("/signup", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username: username, password: password }),
+  });
+
+  if (responds.status !== 200) {
+    errorMsg.innerHTML = "Can't sign up current user. Please try again.";
+  } else {
+    window.location.href = "/home";
+  }
 };
 
 const signUpForm = document.getElementById("sign-up-form");

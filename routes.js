@@ -157,10 +157,11 @@ module.exports = (app, passport) => {
       req.login(user, (error) => {
         if (error) {
           return res.status(500).json(error);
+        } else {
+          return res.json({
+            message: "successfully sign up and sign in!",
+          });
         }
-        return res.json({
-          message: "successfully sign up and sign in!",
-        });
       });
     })(req, res, next);
   });
