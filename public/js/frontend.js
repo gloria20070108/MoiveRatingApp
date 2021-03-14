@@ -1,6 +1,6 @@
 //get movie name from url
 
-async function addcomments(movie_name) {
+const addcomments = async (movie_name) => {
   const comments = document.getElementById("commentsid").value;
   console.log("comments in froneend :" + comments);
   const res = await fetch("http://localhost:3000/addcomment/" + movie_name, {
@@ -13,28 +13,28 @@ async function addcomments(movie_name) {
   }).then((res) => {
     location.reload();
   });
-}
+};
 
-async function fetchcomments(movie_name) {
+const fetchcomments = async (movie_name) => {
   const res = await fetch("/fetchcomment/" + movie_name);
   const data = await res.json();
   console.log(data);
-  var scomments = JSON.stringify(data);
-  var idx;
-  var obj = JSON.parse(scomments);
+  const scomments = JSON.stringify(data);
+  let idx;
+  const obj = JSON.parse(scomments);
   for (idx = 0; idx < obj.length; ++idx) {
     if (obj[idx].hasOwnProperty("comments")) {
-      var comments = obj[idx]["comments"];
+      const comments = obj[idx]["comments"];
     }
     document.getElementById("allcomment").innerHTML += "<br>" + comments;
   }
-}
+};
 
-function changeMovieTitle(movie_name) {
+const changeMovieTitle = (movie_name) => {
   document.getElementById("movieTitle").innerHTML = movie_name;
-}
+};
 
-function changeMoviePoster(movie_name) {
+const changeMoviePoster = (movie_name) => {
   if (movie_name == "DARK") {
     imgLocation = "../images/1.png";
   } else if (movie_name == "BENNY LOVES YOU") {
@@ -47,33 +47,35 @@ function changeMoviePoster(movie_name) {
     imgLocation = "../images/5.png";
   } else if (movie_name == "SOUL") {
     imgLocation = "../images/6.png";
+  } else {
+    imgLocation = "../images/default.png";
   }
-  var image = document.getElementById("movieimage");
+  const image = document.getElementById("movieimage");
   image.src = imgLocation;
-}
+};
 
-async function changeMovieDescriptions(movie_name) {
+const changeMovieDescriptions = async (movie_name) => {
   const res = await fetch("/fetchdescription/" + movie_name);
   const data = await res.json();
   console.log(data);
-  var sdescriptions = JSON.stringify(data);
-  var idx;
-  var obj = JSON.parse(sdescriptions);
+  const sdescriptions = JSON.stringify(data);
+  let idx;
+  const obj = JSON.parse(sdescriptions);
   console.log(obj);
 
-  var introduction = obj["introduction"];
+  const introduction = obj["introduction"] ? obj["introduction"] : "N/A";
   document.getElementById("introduction").innerHTML = introduction;
-  var director = obj["director"];
+  const director = obj["director"] ? obj["director"] : "N/A";
   document.getElementById("director").innerHTML = director;
-  var starring = obj["starring"];
+  const starring = obj["starring"] ? obj["starring"] : "N/A";
   document.getElementById("starring").innerHTML = starring;
-  var year = obj["year"];
+  const year = obj["year"];
   document.getElementById("year").innerHTML = year;
-  var rate = obj["rate"];
+  const rate = obj["rate"];
   document.getElementById("rate").innerHTML = rate;
-}
+};
 
-function GetRequest() {
+const GetRequest = () => {
   let url = window.location.href;
   console.log(url);
   let vars = url.split("/");
@@ -83,9 +85,9 @@ function GetRequest() {
   let movie_name_j = movie_name_s.join(" ");
   console.log(movie_name_j);
   return movie_name_j;
-}
+};
 
-var movie_name = GetRequest();
+const movie_name = GetRequest();
 
 console.log(movie_name);
 
