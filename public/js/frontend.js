@@ -2,7 +2,6 @@
 
 const addcomments = async (movie_name) => {
   const comments = document.getElementById("commentsid").value;
-  console.log("comments in froneend :" + comments);
   const res = await fetch("http://localhost:3000/addcomment/" + movie_name, {
     method: "POST",
     headers: {
@@ -18,16 +17,14 @@ const addcomments = async (movie_name) => {
 const fetchcomments = async (movie_name) => {
   const res = await fetch("/fetchcomment/" + movie_name);
   const data = await res.json();
-  console.log(data);
   const scomments = JSON.stringify(data);
   let idx;
   const obj = JSON.parse(scomments);
-  let comments = "";
   for (idx = 0; idx < obj.length; ++idx) {
     if (obj[idx].hasOwnProperty("comments")) {
-      comments = obj[idx]["comments"];
+      const comments = obj[idx]["comments"];
+      document.getElementById("allcomment").innerHTML += "<br>" + comments;
     }
-    document.getElementById("allcomment").innerHTML += "<br>" + comments;
   }
 };
 
@@ -74,6 +71,9 @@ const changeMovieDescriptions = async (movie_name) => {
   document.getElementById("year").innerHTML = year;
   const rate = obj["rate"];
   document.getElementById("rate").innerHTML = rate;
+  const like = obj["like"];
+  document.getElementById("clicklike").innerHTML = like;
+  document.getElementById("like").innerHTML = like;
 };
 
 const GetRequest = () => {
@@ -86,6 +86,21 @@ const GetRequest = () => {
   let movie_name_j = movie_name_s.join(" ");
   console.log(movie_name_j);
   return movie_name_j;
+};
+
+const addlike = async (movie_name) => {
+  const like = document.getElementById("like").innerHTML;
+  console.log("like!!!!" + like);
+  const res = await fetch("http://localhost:3000/addlike/" + movie_name, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ movie_name: movie_name, like: like }),
+  }).then((res) => {
+    location.reload();
+  });
 };
 
 const movie_name = GetRequest();
@@ -101,5 +116,10 @@ const thisForm = document.getElementById("myForm");
 console.log(thisForm);
 thisForm.addEventListener("submit", (e) => {
   addcomments(movie_name);
+  e.preventDefault();
+});
+
+document.getElementById("clicklike").addEventListener("click", (e) => {
+  addlike(movie_name);
   e.preventDefault();
 });
