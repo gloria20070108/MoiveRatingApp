@@ -23,12 +23,8 @@ const fetchcomments = async (movie_name) => {
   for (idx = 0; idx < obj.length; ++idx) {
     if (obj[idx].hasOwnProperty("comments")) {
       const comments = obj[idx]["comments"];
-<<<<<<< HEAD
-      document.getElementById("allcomment").innerHTML += "<br>" + comments + "</br>";
-=======
       document.getElementById("allcomment").innerHTML +=
         "<br>" + comments + "</br>";
->>>>>>> mongodbsecurity
     }
   }
 };
