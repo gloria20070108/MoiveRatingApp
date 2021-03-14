@@ -16,7 +16,7 @@ async function addcomments(movie_name) {
 }
 
 async function fetchcomments(movie_name) {
-  const res = await fetch("http://localhost:3000/fetchcomment/" + movie_name);
+  const res = await fetch("/fetchcomment/" + movie_name);
   const data = await res.json();
   console.log(data);
   var scomments = JSON.stringify(data);
@@ -53,9 +53,7 @@ function changeMoviePoster(movie_name) {
 }
 
 async function changeMovieDescriptions(movie_name) {
-  const res = await fetch(
-    "http://localhost:3000/fetchdescription/" + movie_name
-  );
+  const res = await fetch("/fetchdescription/" + movie_name);
   const data = await res.json();
   console.log(data);
   var sdescriptions = JSON.stringify(data);
