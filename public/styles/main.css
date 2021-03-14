@@ -1,6 +1,7 @@
 body {
   background-color: #d3912f;
-  font-family: "Calibri", sans-serif !important;
+  /*font-family: "Calibri", sans-serif !important;*/
+  font-family: "Ranchers", cursive;
 }
 
 .container {
@@ -24,6 +25,7 @@ body {
 
 .header {
   display: flex;
+  font-family: "Ranchers", cursive;
 }
 
 .actions-container {
@@ -72,6 +74,9 @@ body {
   margin: 20px 0;
   font-size: 24px;
   color: #d17581;
+}
+p {
+  font-family: "Roboto", sans-serif;
 }
 
 /*.dark input[type="text"] {
