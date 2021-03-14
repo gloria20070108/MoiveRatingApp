@@ -1,13 +1,8 @@
 const MongoClient = require("mongodb").MongoClient;
+const dotenv = require("dotenv");
 const q = require("q");
-const mongodbUrl =
-  "mongodb+srv://user01:neuneuneu@cluster0.ym8ju.mongodb.net/users?retryWrites=true&w=majority";
-// const client = new MongoClient(mongodbUrl);
-
-// client.connect();
-
-// MongoClient.connect(mongodbUrl);
-
+dotenv.config();
+const mongodbUrl = process.env.MONGO_URI;
 exports.localReg = (username, password) => {
   const deferred = q.defer();
 

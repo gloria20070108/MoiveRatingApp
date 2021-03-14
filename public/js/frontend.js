@@ -23,7 +23,12 @@ const fetchcomments = async (movie_name) => {
   for (idx = 0; idx < obj.length; ++idx) {
     if (obj[idx].hasOwnProperty("comments")) {
       const comments = obj[idx]["comments"];
+<<<<<<< HEAD
       document.getElementById("allcomment").innerHTML += "<br>" + comments + "</br>";
+=======
+      document.getElementById("allcomment").innerHTML +=
+        "<br>" + comments + "</br>";
+>>>>>>> mongodbsecurity
     }
   }
 };
@@ -90,7 +95,6 @@ const GetRequest = () => {
 
 const addlike = async (movie_name) => {
   const like = document.getElementById("like").innerHTML;
-  console.log("like!!!!" + like);
   const res = await fetch("http://localhost:3000/addlike/" + movie_name, {
     method: "POST",
     headers: {
