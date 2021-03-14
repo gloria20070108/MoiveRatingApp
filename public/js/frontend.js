@@ -65,14 +65,14 @@ async function changeMovieDescriptions(movie_name) {
 
   var introduction = obj["introduction"];
   document.getElementById("introduction").innerHTML = introduction;
-  var introduction = obj["director"];
-  document.getElementById("director").innerHTML = introduction;
-  var introduction = obj["starring"];
-  document.getElementById("starring").innerHTML = introduction;
-  var introduction = obj["year"];
-  document.getElementById("year").innerHTML = introduction;
-  var introduction = obj["rate"];
-  document.getElementById("rate").innerHTML = introduction;
+  var director = obj["director"];
+  document.getElementById("director").innerHTML = director;
+  var starring = obj["starring"];
+  document.getElementById("starring").innerHTML = starring;
+  var year = obj["year"];
+  document.getElementById("year").innerHTML = year;
+  var rate = obj["rate"];
+  document.getElementById("rate").innerHTML = rate;
 }
 
 function GetRequest() {
