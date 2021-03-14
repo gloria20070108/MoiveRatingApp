@@ -76,11 +76,28 @@ module.exports = (app, passport) => {
   app.post("/addcomment/:movie_name", async (req, res) => {
     movie_name = req.params.movie_name;
     comments = req.body.comments;
+    rate = req.body.rate;
+
     try {
+      if (rate !== "unrate") {
+        const rateResult = await mongoHelper.addRate(
+          movie_name,
+          parseInt(rate)
+        );
+        if (!rateResult) {
+          res.status(500).json({ error: "Something wrong when rating" });
+          return;
+        }
+      }
+
       const result = await mongoHelper.addcomments(movie_name, comments);
-      res.json(result);
+      if (result) {
+        res.json(result);
+      } else {
+        res.status(500).json({ error: "Something wrong when commenting" });
+      }
     } catch (err) {
-      res.send(err);
+      res.status(500).send(err);
     }
   });
 

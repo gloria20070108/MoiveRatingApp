@@ -1,8 +1,10 @@
 const MongoClient = require("mongodb").MongoClient;
 const dotenv = require("dotenv");
 const q = require("q");
+
 dotenv.config();
 const mongodbUrl = process.env.MONGO_URI;
+
 exports.localReg = (username, password) => {
   const deferred = q.defer();
 
@@ -105,7 +107,9 @@ exports.createMovies = (name, year) => {
         const newMovie = {
           movie_name: name,
           year: year,
-          rate: 3.0,
+          rate: 5.0,
+          rate_count: 1,
+          like: 0,
         };
 
         console.log("CREATING Movie:", name);
@@ -114,6 +118,48 @@ exports.createMovies = (name, year) => {
           client.close();
           deferred.resolve(newMovie);
         });
+      }
+    });
+  });
+
+  return deferred.promise;
+};
+
+exports.addRate = (movie_name, rate) => {
+  console.log(movie_name, rate);
+
+  const deferred = q.defer();
+
+  MongoClient.connect(mongodbUrl, async (err, client) => {
+    const db = client.db("movieflex");
+    const collection = db.collection("descriptions");
+
+    collection.findOne({ movie_name: movie_name }).then((result) => {
+      if (null == result) {
+        console.log("CAN'T FIND MOVIE", movie_name);
+        deferred.resolve(false);
+        client.close();
+      } else {
+        const currRate = result.rate;
+        const currRateCount = result.rate_count;
+        const newRateCount = currRateCount + 1;
+        const newRate = (currRate * currRateCount + rate) / newRateCount;
+        const newMovieRating = {
+          rate: newRate,
+          rate_count: newRateCount,
+        };
+        try {
+          result = collection
+            .update({ movie_name: movie_name }, { $set: newMovieRating })
+            .then(() => {
+              client.close();
+              deferred.resolve(true);
+            });
+        } catch (err) {
+          console.error("adding comments wrong");
+          deferred.resolve(false);
+          client.close();
+        }
       }
     });
   });

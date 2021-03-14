@@ -2,13 +2,18 @@
 
 const addcomments = async (movie_name) => {
   const comments = document.getElementById("commentsid").value;
-  const res = await fetch("http://localhost:3000/addcomment/" + movie_name, {
+  const rate = document.getElementById("rate-select").value;
+  const res = await fetch("/addcomment/" + movie_name, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ movie_name: movie_name, comments: comments }),
+    body: JSON.stringify({
+      movie_name: movie_name,
+      rate: rate,
+      comments: comments,
+    }),
   }).then((res) => {
     location.reload();
   });
@@ -70,7 +75,7 @@ const changeMovieDescriptions = async (movie_name) => {
   document.getElementById("starring").innerHTML = starring;
   const year = obj["year"];
   document.getElementById("year").innerHTML = year;
-  const rate = obj["rate"];
+  const rate = obj["rate"].toFixed(1);
   document.getElementById("rate").innerHTML = rate;
   const like = obj["like"];
   document.getElementById("clicklike").innerHTML = like;
