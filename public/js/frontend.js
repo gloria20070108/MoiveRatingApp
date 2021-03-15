@@ -29,7 +29,7 @@ const fetchcomments = async (movie_name) => {
     if (obj[idx].hasOwnProperty("comments")) {
       const comments = obj[idx]["comments"];
       document.getElementById("allcomment").innerHTML +=
-        "<br>" + comments + "</br>";
+        "<div class='comment'>" + comments + "</div>";
     }
   }
 };
@@ -65,7 +65,6 @@ const changeMovieDescriptions = async (movie_name) => {
   const sdescriptions = JSON.stringify(data);
   let idx;
   const obj = JSON.parse(sdescriptions);
-  console.log(obj);
 
   const introduction = obj["introduction"] ? obj["introduction"] : "N/A";
   document.getElementById("introduction").innerHTML = introduction;
@@ -79,7 +78,6 @@ const changeMovieDescriptions = async (movie_name) => {
   document.getElementById("rate").innerHTML = rate;
   const like = obj["like"];
   document.getElementById("clicklike").innerHTML = like;
-  document.getElementById("like").innerHTML = like;
 };
 
 const GetRequest = () => {
@@ -95,7 +93,7 @@ const GetRequest = () => {
 };
 
 const addlike = async (movie_name) => {
-  const like = document.getElementById("like").innerHTML;
+  const like = document.getElementById("clicklike").innerHTML;
   const res = await fetch("/addlike/" + movie_name, {
     method: "POST",
     headers: {

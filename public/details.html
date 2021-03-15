@@ -82,7 +82,7 @@
             <div class="to-right">
               <button
                 id="sign-out-btn"
-                class="btn btn-sm btn-outline-success"
+                class="btn btn-sm btn-outline-success text-content"
                 data-bs-toggle="modal"
                 data-bs-target="#signOutModal"
               >
@@ -105,54 +105,71 @@
             alt="movie gallery"
           />
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="col-lg-8 col-md-6 col-sm-12">
           <h4>INTRODUCTION</h4>
-          <p style="font-family: 'Roboto', sans-serif" id="introduction"></p>
+          <p id="introduction" class="text-content"></p>
           <h6>Director:</h6>
-          <p id="director"></p>
+          <p id="director" class="text-content"></p>
           <h6>Starring:</h6>
-          <p id="starring"></p>
-          <h6>Year:</h6>
-          <p id="year"></p>
-          <h6>Rate:</h6>
-          <p id="rate"></p>
-          <h6>Like:</h6>
-          <p id="like"></p>
+          <p id="starring" class="text-content"></p>
+          <div>
+            <h6 class="oneline">Year:</h6>
+            <p id="year" class="text-content oneline"></p>
+          </div>
+          <div>
+            <h6 class="oneline">Rate:</h6>
+            <p id="rate" class="text-content oneline"></p>
+          </div>
+          <div>
+            <h6 class="oneline">Like:</h6>
+            <i class="fa fa-thumbs-up oneline" id="clicklike"></i>
+          </div>
         </div>
       </div>
       <div class="row gy-5">
-        <h5>COMMENTS</h5>
-        <p id="allcomment"></p>
-        <i class="fa fa-thumbs-up" id="clicklike">1</i>
-        <form id="myForm">
-          <div>
-            Rate:
-            <select id="rate-select" class="rate-select" name="movieRate">
-              <option selected="selected" value="unrate">Please select</option>
-              <option value="10">10</option>
-              <option value="9">9</option>
-              <option value="8">8</option>
-              <option value="7">7</option>
-              <option value="6">6</option>
-              <option value="5">5</option>
-              <option value="4">4</option>
-              <option value="3">3</option>
-              <option value="2">2</option>
-              <option value="1">1</option>
-            </select>
-          </div>
-
+        <h5 class="comment-title">COMMENTS</h5>
+        <form id="myForm" class="comment-form">
           <input
             id="commentsid"
             type="text"
             name="comments"
-            class="form-control input-lg"
+            class="form-control input-lg text-content"
             placeholder="comments"
             required
             autofocus
           />
-          <input id="postSubmit" type="submit" />
+          <div>
+            <div class="oneline">
+              Rate:
+              <select
+                id="rate-select"
+                class="rate-select text-content"
+                name="movieRate"
+              >
+                <option selected="selected" value="unrate">
+                  Please select
+                </option>
+                <option value="10">10</option>
+                <option value="9">9</option>
+                <option value="8">8</option>
+                <option value="7">7</option>
+                <option value="6">6</option>
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+            </div>
+
+            <input
+              id="postSubmit"
+              class="btn btn-sm btn-success comment-submit-btn oneline text-content"
+              type="submit"
+            />
+          </div>
         </form>
+        <div id="allcomment" class="comment-container text-content"></div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>

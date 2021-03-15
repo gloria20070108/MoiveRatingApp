@@ -36,6 +36,7 @@ body {
 .name-filter {
   width: 25vw;
   padding-left: 5px;
+  padding-top: 0;
 }
 
 .year-select {
@@ -47,10 +48,9 @@ body {
 }
 
 .create-movie-btn {
-  height: 36px;
+  height: 35px;
   padding: 0;
-  width: 36px;
-  margin-top: -4px;
+  width: 35px;
 }
 
 .form-control {
@@ -70,17 +70,45 @@ body {
   cursor: pointer;
 }
 
-.stars {
-  margin: 20px 0;
-  font-size: 24px;
-  color: #d17581;
-}
-p {
+.text-content {
   font-family: "Roboto", sans-serif;
 }
 
-/*.dark input[type="text"] {
-  height: 400px;
-  font-size: 20px;
-  line-height: 100px;
-}*/
+.fa-thumbs-up {
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.comment-title {
+  margin-top: 90px;
+}
+
+.comment-form {
+  margin-top: 0;
+}
+
+.rate-select {
+  margin-left: 10px;
+  height: 36px;
+}
+
+.comment-submit-btn {
+  margin-right: 0;
+  float: right;
+}
+
+.oneline {
+  display: inline-block;
+}
+
+.comment-container {
+  margin: 20px;
+  border-top: 1px solid black;
+  padding: 0;
+}
+
+.comment {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid black;
+}

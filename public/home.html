@@ -9,6 +9,14 @@
       rel="stylesheet"
     />
     <link href="./styles/main.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>Movie Rating</title>
   </head>
   <body class="d-flex flex-column h-100">
@@ -76,7 +84,7 @@
                 type="text"
                 id="create-movie-name"
                 name="moviename"
-                class="form-control"
+                class="form-control text-content"
                 placeholder="New movie's name"
                 required
                 autofocus
@@ -85,7 +93,7 @@
                 type="text"
                 id="create-movie-year"
                 name="movieyear"
-                class="form-control"
+                class="form-control text-content"
                 placeholder="New movie's year"
                 required
               />
@@ -124,7 +132,7 @@
               <span id="greeting-msg" class="greeting-msg"></span>
               <button
                 id="sign-out-btn"
-                class="btn btn-sm btn-outline-success"
+                class="btn btn-sm btn-outline-success text-content"
                 data-bs-toggle="modal"
                 data-bs-target="#signOutModal"
               >
@@ -145,14 +153,14 @@
             <input
               type="text"
               id="name-filter"
-              class="name-filter"
+              class="name-filter text-content"
               name="moviename"
               oninput="doFilters()"
               placeholder="Search movie name"
             />
             <select
               id="year-select"
-              class="year-select"
+              class="year-select text-content"
               name="movieyear"
               onchange="doFilters()"
             >
