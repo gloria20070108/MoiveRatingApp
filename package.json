@@ -4,7 +4,7 @@
   "description": "Project 2 of [CS5610](https://johnguerra.co/classes/webDevelopment_spring_2021/)",
   "main": "backend.js",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js backend.js",
+    "start": "node backend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "na lou, zhangzhang li",
