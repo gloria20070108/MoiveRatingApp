@@ -10,6 +10,14 @@
       rel="stylesheet"
     />
     <link href="./styles/sign-in-up.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <main class="container">
@@ -20,7 +28,7 @@
             type="text"
             id="sign-in-username"
             name="username"
-            class="form-control"
+            class="form-control text-content"
             placeholder="Username"
             required
             autofocus
@@ -29,13 +37,13 @@
             type="password"
             id="sign-in-password"
             name="password"
-            class="form-control"
+            class="form-control text-content"
             placeholder="Password"
             required
           />
           <button
             type="submit"
-            class="w-100 btn btn-lg btn-primary sign-in-btn"
+            class="w-100 btn btn-lg btn-success sign-in-btn"
           >
             Sign in
           </button>
@@ -43,7 +51,7 @@
         <div class="footer">
           <div id="error-msg" class="error-msg"></div>
           <div class="button-link">
-            <a href="signup">Sign up</a>
+            <a class="button-link-inner" href="signup">Sign up</a>
           </div>
         </div>
       </div>
