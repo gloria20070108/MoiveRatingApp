@@ -96,7 +96,7 @@ const GetRequest = () => {
 
 const addlike = async (movie_name) => {
   const like = document.getElementById("like").innerHTML;
-  const res = await fetch("http://localhost:3000/addlike/" + movie_name, {
+  const res = await fetch("/addlike/" + movie_name, {
     method: "POST",
     headers: {
       Accept: "application/json",
