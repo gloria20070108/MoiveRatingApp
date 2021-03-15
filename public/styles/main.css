@@ -118,3 +118,7 @@ body {
   padding-bottom: 50px;
   border-bottom: 1px solid black;
 }
+
+.sign-out-btn {
+  margin-top: 20px;
+}
