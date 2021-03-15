@@ -3,6 +3,8 @@ Project 2 of [CS5610](https://johnguerra.co/classes/webDevelopment_spring_2021/)
 
 Web page: https://movie-rating-zhangzhang-na.herokuapp.com/
 
+All images and information from [iMDb](https://www.imdb.com/)
+
 ## Author
 Na Lou
 
