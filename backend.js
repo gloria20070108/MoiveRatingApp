@@ -5,6 +5,8 @@ const passport = require("passport");
 const routes = require("./routes");
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -23,6 +25,6 @@ app.use(passport.session());
 
 routes(app, passport);
 
-app.listen(3000, () => {
-  console.log("listening for connections on 3000");
+app.listen(port, () => {
+  console.log("listening for connections on " + port);
 });
