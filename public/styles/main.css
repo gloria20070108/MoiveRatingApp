@@ -109,14 +109,14 @@ body {
 
 .comment-container {
   margin: 20px;
-  border-top: 1px solid black;
+  border-top: 1px solid darkgoldenrod;
   padding: 0;
 }
 
 .comment {
   padding-top: 50px;
   padding-bottom: 50px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid darkgoldenrod;
 }
 
 .sign-out-btn {
