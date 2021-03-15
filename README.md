@@ -11,7 +11,7 @@ Na Lou
 Zhangzhang Li
 
 ## Tech
-HTML/CSS/JS/MongoDB/Express/NodeJS/Passport
+HTML/CSS/JS/MongoDB/Express/NodeJS/Passport/Heroku
 
 ## License
 MIT
