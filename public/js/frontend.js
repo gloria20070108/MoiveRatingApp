@@ -38,22 +38,14 @@ const changeMovieTitle = (movie_name) => {
   document.getElementById("movieTitle").innerHTML = movie_name;
 };
 
+const relationship = {
+  "DARK": "../images/1.png",
+  "BENNY LOVES YOU": "../images/2.png"
+// future relationship
+}
+
 const changeMoviePoster = (movie_name) => {
-  if (movie_name == "DARK") {
-    imgLocation = "../images/1.png";
-  } else if (movie_name == "BENNY LOVES YOU") {
-    imgLocation = "../images/2.png";
-  } else if (movie_name == "BREAKING BAD") {
-    imgLocation = "../images/3.png";
-  } else if (movie_name == "WESTWORLD") {
-    imgLocation = "../images/4.png";
-  } else if (movie_name == "NOMADLAND") {
-    imgLocation = "../images/5.png";
-  } else if (movie_name == "SOUL") {
-    imgLocation = "../images/6.png";
-  } else {
-    imgLocation = "../images/default.png";
-  }
+  // use relationship dictionary to get path.
   const image = document.getElementById("movieimage");
   image.src = imgLocation;
 };
