@@ -21,6 +21,7 @@ const signup = async () => {
   });
 
   if (responds.status !== 200) {
+    //The error message could be more clear. The User Already exists. Please try again.
     errorMsg.innerHTML = "Can't sign up current user. Please try again.";
   } else {
     window.location.href = "/home";
